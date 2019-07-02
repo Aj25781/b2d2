@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>FIRST UPGRAD</title>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="jquery-3.4.1.min.js"></script>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <style>
+
+        body{
+            background-color:lightsteelblue;
+        }
+        .jumbotron
+        {
+            margin-top:100px;
+            background-color:#0c6d97;
+            border-radius: 20px;
+        }
+        .txt
+        {
+            display:flex;
+            justify-content: center;
+            color:white;
+        }
+        .btn{
+            display:flex;
+            justify-content: center;
+        }
+        #btn-dv
+        {
+            display:flex;
+            justify-content:center;
+        }
+       
+       
+        </style>
+         
+        
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+               <h1 class="txt">SEARCH ANY MOVIE HERE</h1>
+               <p class="txt"></p>
+               
+            </div>
+                <form action="">
+                        <div class="form-group">
+                            <input type="text" id="checkthis" placeholder="Search Film Titles,Subjects,people etc..." class="form-control">
+                        </div>
+
+                        <div class="form-group" id="btn-dv">
+                            <input type="button" value="SUBMIT" class="btn btn-primary" id="bttn">
+                        </div>
+                     
+                        
+                     </form>
+
+                   
+                   
+        </div>
+        <div id="divison">
+                
+            </div>
+       </body>
+       
+       <script>
+            var arr=[
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      ]
+      $("#checkthis").autocomplete({
+        source:arr
+      },{
+          autoFocus:true,
+          delay:500,
+          minLength:2
+      });
+
+            $(document).ready(function(){
+            $("#bttn").click(function(){
+                
+                $.ajax({
+                    type:"GET",
+                    url:"https://api.themoviedb.org/3/discover/movie?api_key=0b7d86673897755716688a378195bec8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1",
+
+                   data:{
+                      
+                        },
+                    dataType: "json",
+
+                    success:function(result){
+                        console.log(result.results[0].title);
+                         },
+                    error:function(){
+                        
+                    }
+            });
+            });
+          
+        });
+       
+            </script>
+    
+</html>
