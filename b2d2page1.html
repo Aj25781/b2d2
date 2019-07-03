@@ -3,8 +3,9 @@
         <title>FIRST UPGRAD</title>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="jquery-3.4.1.min.js"></script>
-            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+<script src='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/js/jquery.circliful.min.js'></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <style>
 
@@ -66,28 +67,15 @@
        </body>
        
        <script>
-            var arr=[
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      ]
-      $("#checkthis").autocomplete({
-        source:arr
-      },{
-          autoFocus:true,
-          delay:500,
-          minLength:2
-      });
-
+     
+            /* $( "input" )
+                .keyup(function() {
+                    var tvalue = $( this ).val();
+                    console.log(tvalue);
+                })
+                .keyup();**/
+          
+                            var house2=new Array(20);
             $(document).ready(function(){
             $("#bttn").click(function(){
                 
@@ -101,16 +89,40 @@
                     dataType: "json",
 
                     success:function(result){
-                        console.log(result.results[0].title);
+                        var house1 = new Array(20); 
+                          result.results.forEach(myFunction);
+                          function  myFunction(item,index){
+                              house1[index]=item;
+
+                             house2[index]=house1[index].original_title;
+                          
+                             
+                    $("#checkthis").autocomplete({
+                                        source:house2
+                                                },{
+                                        autoFocus:true,
+                                        delay:500,
+                                        minLength:2
+                                    });
+                          }
+                            
+                         
                          },
                     error:function(){
                         
                     }
-            });
+                   
             });
           
+            });
+         
+               
+              
+          
         });
-       
+         
+                 
+               
             </script>
     
 </html>
